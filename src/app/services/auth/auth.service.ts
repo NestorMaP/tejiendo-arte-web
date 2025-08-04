@@ -11,7 +11,7 @@ export class AuthService {
   
   constructor( private http: HttpClient,) {}
 
-  register(signupRequest:any): Observable<any> {
-    return this.http.post(BASIC_URL + "signup", signupRequest)
+  register(SignupRequestDto:any): Observable<any> {
+    return this.http.post(BASIC_URL + "signup", SignupRequestDto)
   }
 }

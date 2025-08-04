@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { materialModules } from '../../../material';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { AuthService } from '../../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -10,12 +12,7 @@ import { FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
   styleUrl: './signup.scss'
 })
 export class Signup {
-  /**
-   * signupForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
-  */
+
  signupForm!: FormGroup;
  hidePassword = true;
 
@@ -25,7 +22,7 @@ export class Signup {
   private router: Router){
 
   }
-
+/*
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -34,6 +31,7 @@ export class Signup {
       confirmPassword: [null, [Validators.required]],
     })
   }
+*/
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
@@ -50,7 +48,7 @@ export class Signup {
 
     this.authService.register(this.signupForm.value).subscribe(
       (response) => {
-        this.snackBar.open('Sign up successful!', 'Close' { duration: 5000 });
+        this.snackBar.open('Sign up successful!', 'Close', { duration: 5000 });
         this.router.navigateByUrl("/login");
       },
       (error) => {

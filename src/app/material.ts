@@ -19,7 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 
 
-export const materialModules = [
+export const MaterialModules = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,

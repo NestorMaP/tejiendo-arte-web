@@ -1,20 +1,33 @@
 import { Component } from '@angular/core';
-import { materialModules } from '../../../material';
+import { MaterialModules } from '../../../material';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-signup',
-  imports: [materialModules, ReactiveFormsModule],
   templateUrl: './signup.html',
-  styleUrl: './signup.scss'
+  styleUrl: './signup.scss',
+  imports: [MaterialModules,
+    ReactiveFormsModule, 
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule
+  ],
 })
 export class Signup {
 
  signupForm!: FormGroup;
  hidePassword = true;
+ hideConfirmPassword = true;
 
  constructor( private fb: FormBuilder,
   private snackBar: MatSnackBar,
@@ -22,7 +35,7 @@ export class Signup {
   private router: Router){
 
   }
-/*
+
   ngOnInit(): void {
     this.signupForm = this.fb.group({
       name: [null, [Validators.required]],
@@ -31,10 +44,14 @@ export class Signup {
       confirmPassword: [null, [Validators.required]],
     })
   }
-*/
 
-  togglePasswordVisibility() {
+
+  togglePasswordVisibility(field: 'password' | 'confirmPassword') {
+    if (field === 'password') {
     this.hidePassword = !this.hidePassword;
+    } else {
+      this.hideConfirmPassword = !this.hideConfirmPassword
+    }
   }
 
   onSubmit(): void{

@@ -26,4 +26,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class Login {
 
+  loginForm: FormGroup;
+
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MaterialModules } from '../../../material';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, Validators, FormBuilder, Form } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,5 +27,39 @@ import { MatButtonModule } from '@angular/material/button';
 export class Login {
 
   loginForm: FormGroup;
+
+  hidePassword = true;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+  ) { }
+
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]],
+    })
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+  }
+
+  onSubmit(): void {
+    const username = this.loginForm.get('email')!.value;
+    const password = this.loginForm.get('password')!.value;
+
+    this.authService.login(username,password).subscribe(
+      (success) => {
+        this.snackBar.open('Login successful', 'ERROR', { duration: 5000 });
+      },
+      (error) => {
+        this.snackBar.open('Bad credentials', 'ERROR', { duration: 5000 });
+      }
+    )
+  }
 
 }

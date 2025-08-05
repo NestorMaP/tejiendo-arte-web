@@ -55,10 +55,10 @@ export class Login {
 
     this.authService.login(username,password).subscribe(
       (success) => {
-        this.snackBar.open('Login successful', 'ERROR', { duration: 5000 });
+        this.snackBar.open('Login successful', 'Close', { duration: 5000 });
       },
       (error) => {
-        this.snackBar.open('Bad credentials', 'ERROR', { duration: 5000 });
+        this.snackBar.open('Bad credentials', 'Close', { duration: 5000 });
       }
     )
   }

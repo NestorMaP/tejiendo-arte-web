@@ -6,7 +6,7 @@ const USER = 'tejart-user';
 @Injectable({
   providedIn: 'root'
 })
-export class UserStorage {
+export class UserStorageService {
   
   constructor () {}
 

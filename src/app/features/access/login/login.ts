@@ -3,7 +3,7 @@ import { MaterialModules } from '../../../material';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, ReactiveFormsModule, Validators, FormBuilder, Form } from '@angular/forms';
 import { AuthService } from '../../../services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -21,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule, 
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
 })
 export class Login {

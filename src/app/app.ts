@@ -12,22 +12,4 @@ import { UserStorageService } from './services/storage/user-storage.service';
 })
 export class App {
   title = 'Tejiendo-Arte';
-  
-  isCustomerLoggedIn : boolean = UserStorageService.isCustomerLoggedIn();
-  isAdminLoggedIn : boolean = UserStorageService.isAdminLoggedIn();
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
-      this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
-    })
-  }
-
-  logout() {
-    UserStorageService.signOut();
-    this.router.navigateByUrl('login');
-  }
-
 }

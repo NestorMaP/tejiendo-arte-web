@@ -1,7 +1,30 @@
-<mat-toolbar color="primary" class="navbar">
-  <span class="navbar-brand">Tejiendo Arte</span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/">Main</button>
-  <button mat-button routerLink="/signup">Register</button>
-  <button mat-button routerLink="/login">Login</button>
+
+<div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Tejiendo Arte</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/">Main</button>
+    <button mat-button routerLink="/signup">Register</button>
+    <button mat-button routerLink="/login">Login</button>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Tejiendo Arte</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/admin/dashboard">Dashboard</button>
+    <button mat-button routerLink="/admin/analytics">Analytics</button>
+    <button mat-button routerLink="/admin/category">Category</button>
+  </mat-toolbar>
+</div>
+
+<div *ngIf="isCustomerLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Tejiendo Arte</span>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/">Main</button>
+    <button mat-button routerLink="/signup">Register</button>
+    <button mat-button routerLink="/login">Login</button>
 </mat-toolbar>
+</div>

@@ -2,18 +2,26 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatError, MatFormField, MatLabel } from '@angular/material/input';
+import { MatError, MatInputModule, MatLabel } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-post-category',
   standalone:true,
   imports: [
-    MatFormField,
+    MatFormFieldModule,
     MatLabel,
+    MatInputModule,
     MatError,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,

@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { UserStorageService } from '../../../services/storage/user-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -55,7 +56,11 @@ export class Login {
 
     this.authService.login(username,password).subscribe(
       (success) => {
-        this.snackBar.open('Login successful', 'Close', { duration: 5000 });
+        if (UserStorageService.isAdminLoggedIn()) {
+          this.router.navigateByUrl('admin/dashboard');
+        }else if(UserStorageService.isCustomerLoggedIn()) {
+          this.router.navigateByUrl('customer/dashboard')
+        }
       },
       (error) => {
         this.snackBar.open('Bad credentials', 'Close', { duration: 5000 });

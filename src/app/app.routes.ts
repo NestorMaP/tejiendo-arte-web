@@ -38,6 +38,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/admin/components/dashboard/dashboard')
       .then(m => m.Dashboard),
       },
+      {
+      path: 'category',
+      loadComponent: () => import('./features/user/admin/components/post-category/post-category')
+      .then(m => m.PostCategory),
+      },
     ]
   }
 ];

@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatError, MatFormField, MatLabel } from '@angular/material/input';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -18,7 +18,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterOutlet,
   ],
   templateUrl: './post-category.html',
   styleUrl: './post-category.scss'

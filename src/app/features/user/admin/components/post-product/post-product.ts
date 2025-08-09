@@ -10,15 +10,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatOption, MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-post-product',
   standalone: true,
   imports: [
     MatFormFieldModule,
-    MatLabel,
+    MatSelectModule,
     MatInputModule,
-    MatError,
     MatCardModule,
     MatIconModule,
     MatButtonModule,

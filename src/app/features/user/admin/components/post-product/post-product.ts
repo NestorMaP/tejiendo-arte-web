@@ -75,7 +75,32 @@ export class PostProduct {
   }
 
   addProduct(): void {
+    if(this.productForm.valid) {
+      const formData: FormData = new FormData();
+      formData.append('image', this.selectedFile);
+      formData.append('categoryId', this.productForm.get('name').value);
+      formData.append('name', this.productForm.get('categoryId').value);
+      formData.append('description', this.productForm.get('description').value);
+      formData.append('price', this.productForm.get('price').value);
 
+      this.adminService.addProduct(formData).subscribe((response) => {
+        if (response.id != null) {
+          this.snackBar.open('Product Posted Successfully!', 'Close', {
+            duration:5000
+          });
+          this.router.navigateByUrl('/admin/dashboard');
+        } else {
+          this.snackBar.open(response.error, 'Close', {
+            duration:5000
+          })
+        }
+      });
+    } else {
+      for (const control in this.productForm.controls) {
+        this.productForm.controls[control].markAsDirty();
+        this.productForm.controls[control].updateValueAndValidity();
+      }
+    }
   }
 
 }

@@ -43,6 +43,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/admin/components/post-category/post-category')
       .then(m => m.PostCategory),
       },
+      {
+      path: 'product',
+      loadComponent: () => import('./features/user/admin/components/post-product/post-product')
+      .then(m => m.PostProduct),
+      },
     ]
   }
 ];

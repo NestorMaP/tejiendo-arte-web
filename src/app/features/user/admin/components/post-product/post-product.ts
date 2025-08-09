@@ -1,13 +1,32 @@
 import { Component } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AdminService } from '../../service/admin';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatError, MatInputModule, MatLabel } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-post-product',
   standalone: true,
-  imports: [],
+  imports: [
+    MatFormFieldModule,
+    MatLabel,
+    MatInputModule,
+    MatError,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    CommonModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ],
   templateUrl: './post-product.html',
   styleUrl: './post-product.scss'
 })
@@ -19,7 +38,7 @@ export class PostProduct {
   imagePreview: string | ArrayBuffer | null;
 
   constructor(
-    private formBuilder FormBuilder,
+    private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
     private adminService: AdminService,
@@ -56,7 +75,7 @@ export class PostProduct {
   }
 
   addProduct(): void {
-    
+
   }
 
 }

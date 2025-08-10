@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -36,7 +37,8 @@ export class Dashboard {
 
   constructor(
     private AdminService: AdminService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,22 @@ export class Dashboard {
         this.products.push(element);
       });
     })
+  }
+
+  deleteProduct(productId:any) {
+    this.AdminService.deleteProduct(productId).subscribe(response => {
+      if(response.body == null) {
+        this.snackBar.open('Product Deleted Successfully!','Close', {
+          duration: 5000
+        });
+        this.getAllProducts();
+      } else {
+        this.snackBar.open(response.message, 'Close', {
+          duration: 5000,
+          panelClass: 'error-snackbar'
+        });
+      }
+    });
   }
 
 }

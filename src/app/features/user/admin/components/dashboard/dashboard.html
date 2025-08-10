@@ -1,5 +1,15 @@
-
 <div class="product-list">
+
+    <form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
+        <mat-form-field appearance="outline" class="search-input"></mat-form-field>
+        <mat-label>Enter Keyword to search</mat-label>
+        <input matInput formControlName="title">
+
+        <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </form>
+
     @for (product of products; track product.id) {
         <mat-card class="product-card">
             <div class="product-image">

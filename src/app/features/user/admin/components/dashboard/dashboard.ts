@@ -3,9 +3,11 @@ import { AdminService } from '../../service/admin';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from "@angular/material/button";
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +18,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     MatDividerModule,
     MatButtonModule,
     RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatIconModule,
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'

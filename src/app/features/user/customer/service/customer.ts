@@ -8,7 +8,7 @@ const BASIC_URL = "http://localhost:8080/"
 @Injectable({
   providedIn: 'root'
 })
-export class Customer {
+export class CustomerService {
 
 
   constructor(private http: HttpClient) {}

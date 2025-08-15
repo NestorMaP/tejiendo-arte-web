@@ -70,6 +70,8 @@ export class Dashboard {
   }
 
   addToCart(id:any) {
-    
+    this.CustomerService.addToCart(id).subscribe(response => {
+      this.snackBar.open("Product added to cart successfully", "Close", {duration: 5000});
+    })
   }
 }

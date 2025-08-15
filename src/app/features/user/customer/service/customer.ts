@@ -30,7 +30,7 @@ export class CustomerService {
           productId : productId,
           userId : UserStorageService.getUserId()
         }
-        return this.http.post(BASIC_URL + `api/customer/cart/`, cartDto, {
+        return this.http.post(BASIC_URL + `api/customer/cart`, cartDto, {
           headers: this.createAuthorizationHeader()
         })
       }

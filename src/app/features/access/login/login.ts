@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UserStorageService } from '../../../services/storage/user-storage.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,7 @@ import { UserStorageService } from '../../../services/storage/user-storage.servi
   templateUrl: './login.html',
   styleUrls: ['./login.scss'],
   imports: [MaterialModules,
+    CommonModule,
     ReactiveFormsModule, 
     MatFormFieldModule, 
     MatInputModule, 

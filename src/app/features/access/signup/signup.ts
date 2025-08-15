@@ -9,12 +9,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
+  standalone: true,
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
   imports: [MaterialModules,
+    CommonModule,
     ReactiveFormsModule, 
     MatFormFieldModule, 
     MatInputModule, 

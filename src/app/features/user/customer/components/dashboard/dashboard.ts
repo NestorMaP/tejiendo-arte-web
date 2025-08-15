@@ -65,7 +65,11 @@ export class Dashboard {
         element.processedImage = 'data:image/jpeg;base64,' + element.byteImage;
         this.products.push(element);
       });
+      console.log(this.products);
     })
   }
 
+  addToCart(id:any) {
+    
+  }
 }

@@ -3,12 +3,10 @@ import { CustomerService } from '../../service/customer';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from "@angular/material/button";
-import { MatFormFieldModule, MatSuffix } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -19,12 +17,8 @@ import { MatDialog } from '@angular/material/dialog';
     MatCardModule,
     MatDividerModule,
     MatButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
     MatFormFieldModule,
     MatIconModule, MatIcon,
-    MatInput,
-    MatSuffix,    
   ],
   templateUrl: './cart.html',
   styleUrl: './cart.scss'
@@ -49,7 +43,7 @@ export class Cart {
       this.customerService.getCartByUserId().subscribe(response => {
         this.order = response;
         response.cartItems.forEach(element => {
-          element.processedImage = 'data:image/jpeg;base64,' +element.returnedImg;
+          element.processedImage = 'data:image/jpeg;base64,' + element.returnedImg;
           this.cartItems.push(element);
         });
       });

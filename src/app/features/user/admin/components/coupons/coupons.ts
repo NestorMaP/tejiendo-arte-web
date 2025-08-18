@@ -3,11 +3,12 @@ import { AdminService } from '../../service/admin';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from "@angular/material/button";
-import { MatFormFieldModule, MatSuffix } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatInput } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-coupons',
@@ -20,9 +21,9 @@ import { MatInput } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatIconModule, MatIcon,
-    MatInput,
-    MatSuffix,
+    MatIconModule,
+    MatInputModule,
+    MatTableModule,
   ],
   templateUrl: './coupons.html',
   styleUrl: './coupons.scss'

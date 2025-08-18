@@ -57,7 +57,7 @@ export class PostCoupon {
     if(this.couponForm.valid) {
       this.adminService.addCoupon(this.couponForm.value).subscribe(response => {
         if(response.id != null) {
-          this.snackBar.open('Coupons Posted Successfully!', 'Close', {
+          this.snackBar.open('Coupon Posted Successfully!', 'Close', {
             duration: 5000
           });
           this.router.navigateByUrl('/admin/dashboard');
@@ -69,7 +69,7 @@ export class PostCoupon {
         }
       });
     } else {
-      this.couponForm.markAsTouched();
+      this.couponForm.markAllAsTouched();
     }
   }
 

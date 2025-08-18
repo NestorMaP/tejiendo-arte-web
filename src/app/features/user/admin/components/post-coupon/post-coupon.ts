@@ -11,6 +11,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-post-coupon',  
@@ -26,6 +28,8 @@ import { MatSelectModule } from '@angular/material/select';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   templateUrl: './post-coupon.html',
   styleUrl: './post-coupon.scss'

@@ -5,10 +5,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-cart',
@@ -17,9 +18,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     CommonModule,
     MatCardModule,
     MatDividerModule,
+    FormsModule,
     MatButtonModule,
+    ReactiveFormsModule, 
     MatFormFieldModule,
     MatIconModule, MatIcon,
+    MatInputModule,
   ],
   templateUrl: './cart.html',
   styleUrl: './cart.scss'

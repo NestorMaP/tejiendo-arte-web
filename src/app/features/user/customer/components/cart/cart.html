@@ -11,7 +11,7 @@
                             <div class="item-name" [ngClass]="{ 'highlight': item.highlighted }">
                                 {{ item.productName }}
                             </div>
-                            <div class="item-price">{{ item.price | currency }}</div>
+                            <div class="item-price">{{ item.unitPrice | currency }}</div>
                             <div class="quantity-controls">
                                 <button mat-icon-button [disabled]="item.quantity == 1">
                                     <mat-icon>remove-circle_outline</mat-icon>
@@ -30,13 +30,36 @@
         <div class="total-price">
             Total Amount: {{ order.totalAmount | currency }}
         </div>
+
+        @if(order.couponName != null) {
+            <div class="total-price">
+                Coupon Applied: {{ order.couponName }}
+            </div>
+        }
+
         <div class="total-price">
-            Amount: {{ order.amount | currency }}
+            Final Amount: {{ order.amount | currency }}
         </div>
         <div>
             <button mat-raised-button color="primary">Place Order</button>
         </div>
     </div>
+
+    @if(order.couponName == null) {
+        <div class="container">
+            <form [formGroup]="couponForm" (ngSubmit)="applyCoupon()">
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Code</mat-label>
+                    <input matInput type="text" placeholder="Code" formControlName="code"/>
+                    @if(couponForm.get('code')?.hasError('required')) {
+                        <mat-error>This input is required!</mat-error>
+                    }
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" type="submit">Apply Coupon</button>
+            </form>
+        </div>
+    }
 } @else {
     <ng-container *ngTemplateOutlet="emptyCart"></ng-container>
 }

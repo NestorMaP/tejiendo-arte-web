@@ -1,15 +1,26 @@
 import { Injectable } from '@angular/core';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
+import { Router } from '@angular/router';
 
 const TOKEN = 'tejart-token';
 const USER = 'tejart-user';
+
+interface JwtPayload {
+  exp: number;
+  role?: string;
+  userId?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserStorageService {
+  static router: any;
+
   
-  constructor () {}
+  constructor (
+    private router: Router,
+  ) {}
 
   public saveToken(token: string): void {
     window.localStorage.removeItem(TOKEN);
@@ -45,18 +56,34 @@ export class UserStorageService {
     return user.role;
   }
 
-  static isAdminLoggedIn(): boolean {
-    if(this.getToken === null) {
+  static isTokenExpired(): boolean {
+    const token = this.getToken();
+    if (!token) return true;
+
+    try {
+      const decoded = jwtDecode<JwtPayload>(token);
+      const now = Math.floor(Date.now() / 1000);
+
+      if (decoded.exp && decoded.exp < now) {
+        this.signOut();
+        return true;
+      }
       return false;
+    } catch (error) {
+      this.signOut();
+      return true;
     }
+  }
+
+  static isAdminLoggedIn(): boolean {
+    if(!this.getToken() || this.isTokenExpired()) return false;
     const role: string = this.getUserRole();
     return role == 'ADMIN';
   }
 
   static isCustomerLoggedIn(): boolean {
-    if(this.getToken === null) {
-      return false;
-    }
+    if(!this.getToken() || this.isTokenExpired()) return false;
+
     const role: string = this.getUserRole();
     return role == 'CUSTOMER';
   }
@@ -65,6 +92,4 @@ export class UserStorageService {
     window.localStorage.removeItem(TOKEN);
     window.localStorage.removeItem(USER);
   }
-
-
 }

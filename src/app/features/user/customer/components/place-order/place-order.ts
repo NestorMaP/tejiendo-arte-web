@@ -1,11 +1,52 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CustomerService } from '../../service/customer';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-place-order',
-  imports: [],
+  standalone: true,
+  imports: [
+
+  ],
   templateUrl: './place-order.html',
   styleUrl: './place-order.scss'
 })
 export class PlaceOrder {
+
+  orderForm!: FormGroup
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+    private customerService: CustomerService,
+    private router: Router,
+    public dialog: MatDialog,
+  ) { }
+
+  ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      address: [null, [Validators.required]],
+      orderDescription: [null],
+    })
+  }
+
+  placeOrder() {
+    this.customerService.placeOrder(this.orderForm.value).subscribe(response => {
+      if (response.id != null) {
+        this.snackBar.open("Order placed successfully", "Close", {duration: 5000});
+        this.router.navigateByUrl("/customer/my-orders");
+        this.closeForm();
+      } else {
+        this.snackBar.open("Something went wrong", "Close", {duration: 5000});
+      }
+    })
+  }
+
+  closeForm() {
+    this.dialog.closeAll();
+  }
 
 }

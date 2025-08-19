@@ -72,4 +72,11 @@ export class Cart {
         });
       })
     }
+
+    increaseQuantity(productId: any) {
+      this.customerService.increaseProductQuantity(productId).subscribe(response => {
+        this.snackbar.open('Product quantity increased','Close', { duration: 5000 });
+        this.getCart();
+      })
+    }
 }

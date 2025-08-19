@@ -41,7 +41,7 @@
             Final Amount: {{ order.amount | currency }}
         </div>
         <div>
-            <button mat-raised-button color="primary">Place Order</button>
+            <button mat-raised-button color="primary" (click)="placeOrder()">Place Order</button>
         </div>
     </div>
 

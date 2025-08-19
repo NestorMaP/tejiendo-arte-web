@@ -10,6 +10,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
+import { PlaceOrder } from '../place-order/place-order';
 
 @Component({
   selector: 'app-cart',
@@ -79,5 +80,9 @@ export class Cart {
         if (delta < 0) this.snackbar.open('Product quantity descreaed','Close', { duration: 5000 });
         this.getCart();
       })
+    }
+
+    placeOrder() {
+      this.dialog.open(PlaceOrder);
     }
 }

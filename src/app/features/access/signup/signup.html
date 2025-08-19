@@ -7,9 +7,9 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Name</mat-label>
-                <input matInput formControlName="name" placeholder="Name" required>
+                <input matInput formControlName="first_name" placeholder="Name" required>
 
-                <mat-error *ngIf="signupForm.get('name').invalid && signupForm.get('name').touched">
+                <mat-error *ngIf="signupForm.get('first_name').invalid && signupForm.get('first_name').touched">
                     Please enter a valid name.
                 </mat-error>
             </mat-form-field>

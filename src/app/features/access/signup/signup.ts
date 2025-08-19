@@ -41,7 +41,7 @@ export class Signup {
 
   ngOnInit(): void {
     this.signupForm = this.fb.group({
-      name: [null, [Validators.required]],
+      first_name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
       confirmPassword: [null, [Validators.required]],

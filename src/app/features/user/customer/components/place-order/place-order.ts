@@ -40,7 +40,7 @@ export class PlaceOrder {
   ngOnInit() {
     this.orderForm = this.formBuilder.group({
       address: [null, [Validators.required]],
-      description: [null],
+      orderDescription: [null],
     })
   }
 

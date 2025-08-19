@@ -13,11 +13,11 @@
                             </div>
                             <div class="item-price">{{ item.unitPrice | currency }}</div>
                             <div class="quantity-controls">
-                                <button mat-icon-button [disabled]="item.quantity == 1">
+                                <button mat-icon-button [disabled]="item.quantity == 1" (click)="modifyProductQuantity(item.productId, -1)">
                                     <mat-icon>remove-circle_outline</mat-icon>
                                 </button>
                                 <span class="quantity">{{ item.quantity }}</span>
-                                <button mat-icon-button (click)="increaseQuantity(item.productId)">
+                                <button mat-icon-button (click)="modifyProductQuantity(item.productId, +1)">
                                     <mat-icon>add-circle_outline</mat-icon>
                                 </button>
                             </div>

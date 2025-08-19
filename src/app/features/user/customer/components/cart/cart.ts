@@ -73,9 +73,10 @@ export class Cart {
       })
     }
 
-    increaseQuantity(productId: any) {
-      this.customerService.increaseProductQuantity(productId).subscribe(response => {
-        this.snackbar.open('Product quantity increased','Close', { duration: 5000 });
+    modifyProductQuantity(productId: any, delta: number) {
+      this.customerService.modifyProductQuantity(productId, delta).subscribe(response => {
+        if (delta > 0) this.snackbar.open('Product quantity increased','Close', { duration: 5000 });
+        if (delta < 0) this.snackbar.open('Product quantity descreaed','Close', { duration: 5000 });
         this.getCart();
       })
     }

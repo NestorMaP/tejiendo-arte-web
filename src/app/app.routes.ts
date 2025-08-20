@@ -68,6 +68,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/admin/components/orders/orders')
       .then(m => m.Orders),
       },
+      {
+      path: 'faq/:productId',
+      loadComponent: () => import('./features/user/admin/components/post-product-faq/post-product-faq')
+      .then(m => m.PostProductFaq),
+      },
     ]
   }
 ];

@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../service/customer';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-my-orders',
   standalone: true,
   imports: [
-
+    CommonModule,
+    MatCardModule,
+    MatTableModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   templateUrl: './my-orders.html',
   styleUrl: './my-orders.scss'

@@ -4,6 +4,9 @@ import { FormBuilder, FormsModule, FormGroup, ReactiveFormsModule, Validators } 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../service/admin';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-post-product-faq',
@@ -12,7 +15,9 @@ import { AdminService } from '../../service/admin';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
   ],
   templateUrl: './post-product-faq.html',
   styleUrl: './post-product-faq.scss'

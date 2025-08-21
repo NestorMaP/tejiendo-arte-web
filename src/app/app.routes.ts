@@ -36,6 +36,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/customer/components/view-ordered-products/view-ordered-products')
       .then(m => m.ViewOrderedProducts),
       },
+      {
+      path: 'review/:productId',
+      loadComponent: () => import('./features/user/customer/components/review-ordered-product/review-ordered-product')
+      .then(m => m.ReviewOrderedProduct),
+      },
     ]
   },
   {

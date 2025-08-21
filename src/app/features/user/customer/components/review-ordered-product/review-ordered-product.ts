@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../service/customer';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserStorageService } from '../../../../../services/storage/user-storage.service';
 
 @Component({
   selector: 'app-review-ordered-product',
@@ -52,7 +53,20 @@ export class ReviewOrderedProduct {
   }
 
   submitForm() {
-    
+    const formData: FormData = new FormData();
+    formData.append('image', this.selectedFile);
+    formData.append('productId', this.productId.toString());
+    formData.append('userId', UserStorageService.getUserId().toString());
+    formData.append('rating', this.reviewForm.get('rating').value);
+    formData.append('description', this.reviewForm.get('description').value);
+
+    this.customerService.giveReview(formData).subscribe(response => {
+      if(response.id != null) {
+        this.snackBar.open('Review Posted Successfully!', 'Close', {duration: 5000});
+      } else {
+        this.snackBar.open('Something went wrong', 'Close', {duration: 5000});
+      }
+    })
   }
 
 }

@@ -4,13 +4,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../service/customer';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStorageService } from '../../../../../services/storage/user-storage.service';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-review-ordered-product',
   standalone: true,
   imports: [
+    CommonModule,
+    MatFormFieldModule,
     ReactiveFormsModule,
-
+    MatIconModule,
+    MatSelectModule,
+    MatInputModule,
+    MatButtonModule,
   ],
   templateUrl: './review-ordered-product.html',
   styleUrl: './review-ordered-product.scss'

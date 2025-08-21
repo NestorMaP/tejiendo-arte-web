@@ -30,6 +30,12 @@ export class AdminService {
       })
     }
 
+    getProductById(productId): Observable<any> {
+      return this.http.get(BASIC_URL + `api/admin/product/${productId}`, {
+        headers: this.createAuthorizationHeader()
+      })
+    }
+
     getAllProductsByName(productName): Observable<any> {
       return this.http.get(BASIC_URL + `api/admin/search/${productName}`, {
         headers: this.createAuthorizationHeader()

@@ -8,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../../service/admin';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -32,16 +32,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UpdateProduct {
 
+  productId: number;
+
   productForm: FormGroup;
   listOfCategories: any = [];
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null;
+
+  existingImage: string | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
     private adminService: AdminService,
+    private activatedroute: ActivatedRoute,
   ) { }
 
   onFileSelected(event: any) {
@@ -64,13 +69,23 @@ export class UpdateProduct {
       price: [null, [Validators.required]],
       description: [null, [Validators.required]],
     });
+    
+    this.productId = this.activatedroute.snapshot.params['productId'];
 
     this.getAllCategories();
+    this.getProductById();
   }
 
   getAllCategories() {
     this.adminService.getAllCategories().subscribe(response => {
       this.listOfCategories = response;
+    });
+  }
+
+  getProductById() {
+    this.adminService.getProductById(this.productId).subscribe(response => {
+      this.productForm.patchValue(response);
+      this.existingImage = 'data:image/jpeg;base64,' + response.byteImage;
     });
   }
 

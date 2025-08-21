@@ -1,1 +1,61 @@
-<p>update-product works!</p>
+<div class="container">
+    <h2>Add Product</h2>
+
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+
+        <div class="file-upload-container">
+            <label class="file-upload-label">
+                <span>Select a File</span>
+                <input type="file" id="fileInput" (change)="onFileSelected($event)" hidden />
+                <mat-icon>attach_file</mat-icon>
+            </label>
+
+            @if (selectedFile) {
+                <div class="circle-image">
+                    <img [src]="imagePreview" alt="Selected Image" class="preview-image">
+                </div>
+            }
+        </div>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Select a Category</mat-label>
+            <mat-select formControlName="categoryId" name="categoryId">
+                @for (category of listOfCategories; track category.id) {
+                    <mat-option [value]="category.id">
+                        {{ category.name }}
+                    </mat-option>
+                }
+            </mat-select>
+            @if(productForm.get('categoryId')?.hasError('required')) {
+                <mat-error>This Input is Required!</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" placeholder="Name" formControlName="name" />
+            @if (productForm.get('name')?.hasError('required')) {
+                <mat-error>This Input is Required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" placeholder="Price" formControlName="price" />
+            @if (productForm.get('price')?.hasError('required')) {
+                <mat-error>This Input is Required</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            @if (productForm.get('description')?.hasError('required')) {
+                <mat-error>This Input is Required</mat-error>
+            }
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Add Product</button>
+
+    </form>
+</div>

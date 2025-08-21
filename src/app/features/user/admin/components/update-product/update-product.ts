@@ -40,6 +40,7 @@ export class UpdateProduct {
   imagePreview: string | ArrayBuffer | null;
 
   existingImage: string | null = null;
+  imageChanged = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,6 +53,9 @@ export class UpdateProduct {
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
     this.previewImage();
+    this.imageChanged = true;
+
+    this.existingImage = null;
   }
 
   previewImage() {
@@ -89,18 +93,22 @@ export class UpdateProduct {
     });
   }
 
-  addProduct(): void {
+  updateProduct(): void {
     if(this.productForm.valid) {
       const formData: FormData = new FormData();
-      formData.append('image', this.selectedFile);
+
+      if(this.imageChanged && this.selectedFile) {
+        formData.append('image', this.selectedFile);
+      }
+
       formData.append('categoryId', this.productForm.get('categoryId').value);
       formData.append('name', this.productForm.get('name').value);
       formData.append('description', this.productForm.get('description').value);
       formData.append('price', this.productForm.get('price').value);
 
-      this.adminService.addProduct(formData).subscribe((response) => {
+      this.adminService.updateProduct(this.productId, formData).subscribe((response) => {
         if (response.id != null) {
-          this.snackBar.open('Product Posted Successfully!', 'Close', {
+          this.snackBar.open('Product Updated Successfully!', 'Close', {
             duration:5000
           });
           this.router.navigateByUrl('/admin/dashboard');

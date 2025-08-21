@@ -54,6 +54,11 @@ export const routes: Routes = [
       .then(m => m.PostProduct),
       },
       {
+      path: 'product/:productId',
+      loadComponent: () => import('./features/user/admin/components/update-product/update-product')
+      .then(m => m.UpdateProduct),
+      },
+      {
       path: 'coupons',
       loadComponent: () => import('./features/user/admin/components/coupons/coupons')
       .then(m => m.Coupons),

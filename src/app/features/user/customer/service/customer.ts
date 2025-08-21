@@ -81,7 +81,7 @@ export class CustomerService {
       } 
 
       giveReview(reviewDto:any): Observable<any> {
-        return this.http.post(BASIC_URL + `api/customer/review`, {
+        return this.http.post(BASIC_URL + `api/customer/review`, reviewDto, {
           headers: this.createAuthorizationHeader()
         })
       }

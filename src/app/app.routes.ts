@@ -31,6 +31,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/customer/components/my-orders/my-orders')
       .then(m => m.MyOrders),
       },
+      {
+      path: 'ordered_products/:orderId',
+      loadComponent: () => import('./features/user/customer/components/view-ordered-products/view-ordered-products')
+      .then(m => m.ViewOrderedProducts),
+      },
     ]
   },
   {

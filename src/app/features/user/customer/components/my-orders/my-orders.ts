@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-my-orders',
@@ -17,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
     MatMenuModule,
     MatButtonModule,
     MatIconModule,
+    RouterLink,
   ],
   templateUrl: './my-orders.html',
   styleUrl: './my-orders.scss'

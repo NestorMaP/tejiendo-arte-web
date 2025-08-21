@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CustomerService } from '../../service/customer';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-ordered-products',
   standalone: true,
   imports: [
-
+    CommonModule,
+    RouterModule,
+    MatButtonModule,
   ],
   templateUrl: './view-ordered-products.html',
   styleUrl: './view-ordered-products.scss'
@@ -22,7 +26,7 @@ export class ViewOrderedProducts {
     private customerService: CustomerService,
   ) { }
 
-  ntOnInit() {
+  ngOnInit() {
     this.orderId = this.activatedroute.snapshot.params['orderId'];
     this.getOrderedProductsDetailsByOrderId();
   }

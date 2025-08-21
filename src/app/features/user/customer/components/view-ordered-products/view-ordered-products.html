@@ -1,1 +1,41 @@
-<p>view-ordered-products works!</p>
+<div class="ordered-product-container">
+    @for(product of orderedProductDetailsList; track product.id) {
+        <div class="ordered-product">
+            <div class="product-info">
+
+                <div class="product-image">
+                    <img [src]="product.processedImage" alt="product-image"/>
+                </div>
+                
+                <div class="product-details">
+                    <div class="item-row">
+                        
+                        <div class="item-name">
+                            {{ product.name }}
+                        </div>
+                        
+                        <div class="item-price">
+                            Price: {{ product.productPrice }}€
+                        </div>
+
+                        <div class="item-quantity">
+                            Quantity: {{ product.quantity }}
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button mat-raised-button color="primary" [routerLink]="['/customer/review', product.id]">
+                        Give Review
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    }
+    
+    <div class="total-price">
+        Total: {{ totalAmount }}€
+    </div>
+</div>

@@ -7,3 +7,38 @@
         </button>
     </mat-form-field>
 </form>
+
+@if(order) {
+    <div class="orderd-details-container">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Order Details</mat-card-title>
+            </mat-card-header>
+
+            <div class="order-detail">
+                Tracking Id: <strong>{{ order.trackingId }}</strong>
+            </div>
+
+            <div class="order-detail">
+                User Name: <strong>{{ order.userName }}</strong>
+            </div>
+
+            <div class="order-detail">
+                Address: <strong>{{ order.address }}</strong>
+            </div>
+
+            <div class="order-detail">
+                Amount: <strong>{{ order.amount }}€</strong>
+            </div>
+
+            <div class="order-detail">
+                Status: <strong>{{ order.status }}</strong>
+            </div>
+
+            <div class="order-detail">
+                Date: <strong>{{ order.date | date }}</strong>
+            </div>
+
+        </mat-card>
+    </div>
+}

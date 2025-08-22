@@ -27,6 +27,7 @@ import { MatCardModule } from '@angular/material/card';
 export class TrackOrder {
 
   searchOrderForm!: FormGroup;
+  order: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,6 +43,7 @@ export class TrackOrder {
   submitForm() {
     this.authService.getOrderByTrackingId(this.searchOrderForm.get('trackingId').value).subscribe(response => {
       console.log(response)
+      this.order = response;
     })
   }
 }

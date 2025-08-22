@@ -35,7 +35,7 @@ export class ViewProductDetail {
   getProductDetailById() {
     this.customerService.getProductDetailById(this.productId).subscribe(response => {
       this.product = response.productDto;
-      this.product.processedImage = 'data:image/png;base64' + response.productDto.byteImage;
+      this.product.processedImage = 'data:image/png;base64,' + response.productDto.byteImage;
 
       this.FAQS = response.faqDtoList;
 

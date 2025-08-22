@@ -9,6 +9,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators } 
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,6 +25,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatIconModule, MatIcon,
     MatInput,
     MatSuffix,
+    RouterModule,
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'

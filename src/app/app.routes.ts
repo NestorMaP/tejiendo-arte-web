@@ -41,6 +41,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/customer/components/review-ordered-product/review-ordered-product')
       .then(m => m.ReviewOrderedProduct),
       },
+      {
+      path: 'product/:productId',
+      loadComponent: () => import('./features/user/customer/components/view-product-detail/view-product-detail')
+      .then(m => m.ViewProductDetail),
+      },
     ]
   },
   {

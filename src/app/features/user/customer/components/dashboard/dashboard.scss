@@ -59,6 +59,10 @@
                 font-weight: bold;
                 color: #108EE9;
                 margin-bottom: 10px;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
 
             .product-description {

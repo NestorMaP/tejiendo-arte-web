@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../service/customer';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-product-detail',
   standalone: true,
   imports: [
-
+    CommonModule,
   ],
   templateUrl: './view-product-detail.html',
   styleUrl: './view-product-detail.scss'
@@ -34,7 +35,7 @@ export class ViewProductDetail {
   getProductDetailById() {
     this.customerService.getProductDetailById(this.productId).subscribe(response => {
       this.product = response.productDto;
-      this.product.processedImagg = 'data:image/png;base64' + response.productDto.byteImage;
+      this.product.processedImage = 'data:image/png;base64' + response.productDto.byteImage;
 
       this.FAQS = response.faqDtoList;
 

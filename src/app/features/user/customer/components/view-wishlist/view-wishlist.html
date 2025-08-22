@@ -1,1 +1,16 @@
-<p>view-wishlist works!</p>
+<div class="container">
+    @for(product of products; track product.id) {
+        
+        <div class="product-card">
+            @if(product.byteImage) {
+                <img [src]="product.processedImage" alt="{{ product.productName }} Image"/>
+            }
+        </div>
+
+        <div class="product-details">
+            <h2>{{ product.productName }}</h2>
+            <p class="description">{{ product.productDescription }}</p>
+            <p class="price">Price: {{ product.price }}€</p>
+        </div>
+    }
+</div>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CustomerService } from '../../service/customer';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-view-wishlist',
   standalone: true,
   imports: [
-
+    CommonModule,
   ],
   templateUrl: './view-wishlist.html',
   styleUrl: './view-wishlist.scss'

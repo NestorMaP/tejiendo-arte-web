@@ -4,12 +4,14 @@ import { CustomerService } from '../../service/customer';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserStorageService } from '../../../../../services/storage/user-storage.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-view-product-detail',
   standalone: true,
   imports: [
     CommonModule,
+    MatIconModule,
   ],
   templateUrl: './view-product-detail.html',
   styleUrl: './view-product-detail.scss'

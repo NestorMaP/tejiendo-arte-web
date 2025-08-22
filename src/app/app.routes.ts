@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'order',
+    loadComponent: () => import('./features/track-order/track-order')
+    .then(m => m.TrackOrder)
+  },
+  {
     path: 'login',
     loadComponent: () => import('./features/access/login/login')
     .then(m => m.Login)

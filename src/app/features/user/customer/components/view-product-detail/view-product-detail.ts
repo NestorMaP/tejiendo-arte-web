@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../service/customer';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserStorageService } from '../../../../../services/storage/user-storage.service';
 
 @Component({
   selector: 'app-view-product-detail',
@@ -44,6 +45,21 @@ export class ViewProductDetail {
         this.reviews.push(element);
       });
     });
+  }
+
+  addToWishlist() {
+    const wishlistDto = {
+      productId: this.productId,
+      userId: UserStorageService.getUserId()
+    }
+
+    this.customerService.addProductToWishlist(wishlistDto).subscribe(response => {
+      if(response.id != null) {
+        this.snackBar.open('Product Added to Wishlist Successfully!', 'Close', {duration: 5000});
+      } else {
+        this.snackBar.open('Already in Wishlist!', 'Close', {duration: 5000});
+      }
+    }) 
   }
 
 }

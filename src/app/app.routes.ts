@@ -69,6 +69,11 @@ export const routes: Routes = [
       .then(m => m.Dashboard),
       },
       {
+      path: 'analytics',
+      loadComponent: () => import('./features/user/admin/components/analytics/analytics')
+      .then(m => m.Analytics),
+      },
+      {
       path: 'category',
       loadComponent: () => import('./features/user/admin/components/post-category/post-category')
       .then(m => m.PostCategory),

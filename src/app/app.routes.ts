@@ -46,6 +46,11 @@ export const routes: Routes = [
       loadComponent: () => import('./features/user/customer/components/view-product-detail/view-product-detail')
       .then(m => m.ViewProductDetail),
       },
+      {
+      path: 'wishlist',
+      loadComponent: () => import('./features/user/customer/components/view-wishlist/view-wishlist')
+      .then(m => m.ViewWishlist),
+      },
     ]
   },
   {
